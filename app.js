@@ -1,12 +1,12 @@
 (function() {
     var     game = {
         // Make baord 
-        gameBoard: [{name: "a", value: 0}, {name: "b", value: 0}, {name: "c", value: 0}, {name: "d", value: 0}, {name: "e", value: 0}, {name: "f", value: 0}, {name: "g", value: 0}, {name: "h", value: 0}, {name: "i", value: 0}],
+        gameBoard: [{name: 1, value: 0}, {name: 2, value: 0}, {name: 3, value: 0}, {name: 4, value: 0}, {name: 5, value: 0}, {name: 6, value: 0}, {name: 7, value: 0}, {name: 8, value: 0}, {name: 9, value: 0}],
 
         // Init 
         init: function(){
         },
-        
+
     }
     game.init();
 })();
