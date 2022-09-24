@@ -16,18 +16,20 @@
             this.tiles = document.querySelectorAll(".tile")
         },
 
-        // Only thing that touches the DOM itself
+        // Binds events to dom elements 
         bindEvents: function(){
             this.tiles.forEach(tile => {
                 tile.addEventListener("click", this.play.bind(this));
             });
         },
 
-        // Only part of 
+        // Only thing that alters the DOM itself
         render: function(){
             for (let i = 0; i < 9; i++){
-                if (this.gameBoard[i] != 0){
-                    this.tiles[i].textContent = "X";
+                if (this.gameBoard[i] == 1){
+                    this.tiles[i].textContent = "X"
+                } else if (this.gameBoard[i] == -1){
+                    this.tiles[i].textContent = "O";
                 }
             }
         },
