@@ -1,13 +1,24 @@
 (function() {
     var     game = {
         // Make baord 
-        gameBoard: [{name: 1, value: 0}, {name: 2, value: 0}, {name: 3, value: 0}, {name: 4, value: 0}, {name: 5, value: 0}, {name: 6, value: 0}, {name: 7, value: 0}, {name: 8, value: 0}, {name: 9, value: 0}],
+        gameBoard: [0, 0, 0, 1, 0, 0, 0, 0, 1],
 
         // Init 
         init: function(){
+            this.render()
         },
 
-    }
+        // Render
+        render: function(){
+            const tiles = document.querySelectorAll(".tile")
+            for (let i = 0; i < 9; i++){
+                if (this.gameBoard[i] != 0){
+                    tiles[i].textContent = "X";
+                }
+            }
+        },
+
+    };
     game.init();
 })();
 
