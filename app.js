@@ -3,8 +3,8 @@
         // Make baord 
         gameBoard: [0, 0, 0, 0, 0, 0, 0, 0, 0],
         turns: 0,
-
-        // initializes the module
+        
+        // initializes the modulez
         init: function(){
             this.cacheDom();
             this.bindEvents();
@@ -19,18 +19,19 @@
         // Binds events to dom elements 
         bindEvents: function(){
             this.tiles.forEach(tile => {
-                tile.addEventListener("click", this.play.bind(this));
+                tile.addEventListener("click", this.play);
+
             });
         },
 
-        // Only thing that alters the DOM itself
+        // Only thing that alters'0 the DOM itself
         render: function(){
             for (let i = 0; i < 9; i++){
                 if (this.gameBoard[i] == 1){
                     this.tiles[i].textContent = "X"
                 } else if (this.gameBoard[i] == -1){
                     this.tiles[i].textContent = "O";
-                }
+                }  
             }
         },
 
@@ -44,9 +45,14 @@
         },
 
         // add button listners to play
+        whichButtonWasClicked: function(){
+            globalThis.play(this.id)
+        },
+
         play: function(){
-            console.log(this.gameBoard)
+            console.log(this.id)
         }
+
     };
     game.init();
 })();
