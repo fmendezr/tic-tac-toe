@@ -7,7 +7,7 @@ const cacheDom = (function() {
 
 // Player factory
 const playerFactory = (name, number, symbol) => {
-    return {name, number, symbol};
+    return {name, number, symbol, getNameWithSymbol};
 };
 
 // Create players 
@@ -47,12 +47,34 @@ let game = (function() {
         return symbol;
     };
 
+    // determines if someone has won 
+    let winner = function(){
+        combinations = [
+                      [cacheDom.tiles[0].textContent, cacheDom.tiles[1].textContent, cacheDom.tiles[2].textContent], 
+                      [cacheDom.tiles[3].textContent, cacheDom.tiles[4].textContent, cacheDom.tiles[5].textContent], 
+                      [cacheDom.tiles[6].textContent, cacheDom.tiles[7].textContent, cacheDom.tiles[8].textContent], 
+                      [cacheDom.tiles[0].textContent, cacheDom.tiles[3].textContent, cacheDom.tiles[6].textContent], 
+                      [cacheDom.tiles[1].textContent, cacheDom.tiles[4].textContent, cacheDom.tiles[7].textContent], 
+                      [cacheDom.tiles[2].textContent, cacheDom.tiles[5].textContent, cacheDom.tiles[8].textContent], 
+                      [cacheDom.tiles[0].textContent, cacheDom.tiles[4].textContent, cacheDom.tiles[8].textContent],
+                      [cacheDom.tiles[6].textContent, cacheDom.tiles[4].textContent, cacheDom.tiles[2].textContent]
+                      ];
+      arr = [];
+      for(let i = 0; i < combinations.length; i++){
+          arr.push(combinations[i].every(element => element == combinations[i][0] && combinations[i][0] != 0));
+      }
+      return arr.some(element => element == true)
+      };
+
     // places x or y on empty tiles  
     cacheDom.tiles.forEach(element => {
         element.addEventListener("click", () => {
             if(gameBoardModule.gameBoard[element.id] == 0){
                 gameBoardModule.gameBoard[element.id] = determineSymbol();
                 renderModule.render()
+                if(winner() == true){
+                    console.log("winner")
+                }
             }
         })
     }); 
