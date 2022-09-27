@@ -1,13 +1,14 @@
 // only thing that caches stuff from the dom 
 const cacheDom = (function() {
-    const tiles = document.querySelectorAll(".tile")
-    return {tiles}
+    const tiles = document.querySelectorAll(".tile");
+    const resetBtn = document.querySelectorAll("#reset-btn");
+    return {tiles, resetBtn}
 })()
 
 
 // Player factory
 const playerFactory = (name, number, symbol) => {
-    return {name, number, symbol, getNameWithSymbol};
+    return {name, number, symbol};
 };
 
 // Create players 
@@ -37,18 +38,18 @@ let game = (function() {
     turns = 0;
 
     // determine wwhether an X or an O is to be placed 
-    let determineSymbol = function(){
+    const determineTurn = function(){
         if(turns % 2 == 0){
-            symbol = Patrick.symbol;
+            player = Patrick;
         } else {
-            symbol = Daemon.symbol;
+            player = Daemon;
         }
         turns += 1; 
-        return symbol;
+        return player;
     };
 
     // determines if someone has won 
-    let winner = function(){
+    const winner = function(){
         combinations = [
                       [cacheDom.tiles[0].textContent, cacheDom.tiles[1].textContent, cacheDom.tiles[2].textContent], 
                       [cacheDom.tiles[3].textContent, cacheDom.tiles[4].textContent, cacheDom.tiles[5].textContent], 
@@ -64,18 +65,21 @@ let game = (function() {
           arr.push(combinations[i].every(element => element == combinations[i][0] && combinations[i][0] != 0));
       }
       return arr.some(element => element == true)
-      };
+    };
 
     // places x or y on empty tiles  
     cacheDom.tiles.forEach(element => {
         element.addEventListener("click", () => {
             if(gameBoardModule.gameBoard[element.id] == 0){
-                gameBoardModule.gameBoard[element.id] = determineSymbol();
+                gameBoardModule.gameBoard[element.id] = determineTurn().symbol;
                 renderModule.render()
                 if(winner() == true){
-                    console.log("winner")
+                    console.log(`Winner is ${determineTurn().name}`)
+                }
+                if(turns == 9){
+                    console.log("Draw")
                 }
             }
         })
-    }); 
+    });
 })()
