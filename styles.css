@@ -41,14 +41,14 @@ body {
 
 /* result module */
 
-#result-module {
+#result-modal {
     position: fixed;
     transform: translate(-50%, -50%) scale(0);
-    top: 50%;
+    top: 52%;
     left: 50%;
     z-index: 10;
     width: 225px;
-    height: 235px;
+    height: 250px;
     padding: 15px;
     border-radius: 15px;
     background-color: rgba(0, 0, 44, 1);
@@ -61,7 +61,7 @@ body {
     font-size: 1.25rem;
 }
 
-#result-module.active {
+#result-modal.active {
     transform: translate(-50%, -50%) scale(1);
 }
 
@@ -70,7 +70,7 @@ body {
 }
 
 
-#result-module > button{
+#result-modal > button{
     height: 3rem;
     width: 7rem;
     border-radius: 1rem;

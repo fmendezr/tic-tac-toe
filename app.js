@@ -2,7 +2,9 @@
 const cacheDom = (function() {
     const tiles = document.querySelectorAll(".tile");
     const resetBtn = document.querySelectorAll("#reset-btn");
-    return {tiles, resetBtn}
+    const resultModal = document.getElementById("result-modal");
+    const textResultModal = document.getElementById("result-printer");
+    return {tiles, resetBtn, resultModal, textResultModal}
 })()
 
 
@@ -74,10 +76,12 @@ let game = (function() {
                 gameBoardModule.gameBoard[element.id] = determineTurn().symbol;
                 renderModule.render()
                 if(winner() == true){
-                    console.log(`Winner is ${determineTurn().name}`)
+                    cacheDom.textResultModal.textContent = `${determineTurn().name} Won`;
+                    cacheDom.resultModal.classList.add("active");
                 }
                 if(turns == 9){
-                    console.log("Draw")
+                    cacheDom.textResultModal.textContent = "Draw";
+                    cacheDom.resultModal.classList.add("active");
                 }
             }
         })
