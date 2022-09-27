@@ -1,7 +1,9 @@
 * {
     margin: 0;
     padding: 0;
+    border: 0;
     font-family: Garamond;
+    font-size: 10;
 }
 
 #app-container {
@@ -35,4 +37,41 @@ body {
     border-radius: 10px;
     font-size: 20px;
     font-weight: bold;
+}
+
+/* result module */
+
+#result-module {
+    position: fixed;
+    transform: translate(-50%, -50%) scale(0);
+    top: 50%;
+    left: 50%;
+    z-index: 10;
+    width: 225px;
+    height: 235px;
+    padding: 15px;
+    border-radius: 15px;
+    background-color: rgba(0, 0, 44, 1);
+    border: 3px solid rgba(224, 222, 222, 0.351);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 2rem;
+    font-size: 1.25rem;
+}
+
+#result-module.active {
+    transform: translate(-50%, -50%) scale(1);
+}
+
+#result-printer{ 
+    color:white;
+}
+
+
+#result-module > button{
+    height: 3rem;
+    width: 7rem;
+    border-radius: 1rem;
 }
