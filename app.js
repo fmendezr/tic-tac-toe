@@ -1,7 +1,7 @@
 // only thing that caches stuff from the dom 
 const cacheDom = (function() {
     const tiles = document.querySelectorAll(".tile");
-    const resetBtn = document.querySelectorAll("#reset-btn");
+    const resetBtn = document.getElementById("resetBtn");
     const resultModal = document.getElementById("result-modal");
     const textResultModal = document.getElementById("result-printer");
     const playerNames = document.querySelectorAll(".name");
@@ -49,8 +49,11 @@ let game = (function() {
     cacheDom.startBtn.addEventListener("click", () => {
         Patrick.changeName(cacheDom.playerNames[0].value);
         Driver.changeName(cacheDom.playerNames[1].value);
-        cacheDom.initialModal.classList.remove("active")
+        cacheDom.initialModal.classList.remove("active");
+        cacheDom.resetBtn.classList.add("active");
     })
+
+    // restart everything
 
     // determine wwhether an X or an O is to be placed 
     const determineTurn = function(){

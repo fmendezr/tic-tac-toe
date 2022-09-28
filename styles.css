@@ -31,13 +31,22 @@ body {
     height: 100vh;
 }
 
-.start-reset { 
+.reset { 
+    height: 0;
+    width: 0;
+    font-size:  0px;
+    color: white;
+    background-color: white;
+}
+
+.reset.active{
     height: 50px;
     width: 150px;
     border-radius: 10px;
     border: 3px solid rgb(85, 85, 85);
     font-size: 20px;
     font-weight: bold;
+    color: black;
 }
 
 /* Initial Modal */
