@@ -51,7 +51,7 @@ let game = (function() {
         Driver.changeName(cacheDom.playerNames[1].value);
         cacheDom.initialModal.classList.remove("active")
     })
-    
+
     // determine wwhether an X or an O is to be placed 
     const determineTurn = function(){
         if(turns % 2 == 0){
@@ -89,6 +89,7 @@ let game = (function() {
                 gameBoardModule.gameBoard[element.id] = determineTurn().symbol;
                 renderModule.render()
                 if(winner() == true){
+                    turns -= 1;
                     cacheDom.textResultModal.textContent = `${determineTurn().name} Won`;
                     cacheDom.resultModal.classList.add("active");
                 }
