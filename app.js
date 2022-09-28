@@ -4,18 +4,24 @@ const cacheDom = (function() {
     const resetBtn = document.querySelectorAll("#reset-btn");
     const resultModal = document.getElementById("result-modal");
     const textResultModal = document.getElementById("result-printer");
-    return {tiles, resetBtn, resultModal, textResultModal}
+    const playerNames = document.querySelectorAll(".name");
+    const initialModal = document.getElementById("initial-modal");
+    const startBtn = document.getElementById("startBtn");
+    return {tiles, resetBtn, resultModal, textResultModal, playerNames, initialModal, startBtn}
 })()
 
 
 // Player factory
 const playerFactory = (name, number, symbol) => {
-    return {name, number, symbol};
+    return {name, number, symbol, changeName(newName){
+        this.name = newName;
+        return this;
+    }};
 };
 
-// Create players 
-const Patrick = playerFactory("Patrick", 1, "X");
-const Daemon = playerFactory("Daemon", 2, "O");
+// Create Players 
+const Patrick = playerFactory('Patrick', 1, "X");
+const Driver = playerFactory("Driver", 2, "O");
 
 // Game board module object 
 let  gameBoardModule =  (function() {
@@ -39,12 +45,19 @@ let renderModule = (function() {
 let game = (function() {
     turns = 0;
 
+    //create players 
+    cacheDom.startBtn.addEventListener("click", () => {
+        Patrick.changeName(cacheDom.playerNames[0].value);
+        Driver.changeName(cacheDom.playerNames[1].value);
+        cacheDom.initialModal.classList.remove("active")
+    })
+    
     // determine wwhether an X or an O is to be placed 
     const determineTurn = function(){
         if(turns % 2 == 0){
             player = Patrick;
         } else {
-            player = Daemon;
+            player = Driver;
         }
         turns += 1; 
         return player;

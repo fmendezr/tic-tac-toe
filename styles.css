@@ -62,6 +62,10 @@ body {
     font-size: 1.25rem;
 }
 
+#initial-modal.active {
+    transform: translate(-50%, -50%) scale(1);
+}
+
 input {
     display: block;
     height: 2rem;
@@ -76,10 +80,6 @@ input {
 
  label {
     color: white;
-}
-
-#initial-modal.active {
-    transform: translate(-50%, -50%) scale(1);
 }
 
 #initial-modal > form > button{
