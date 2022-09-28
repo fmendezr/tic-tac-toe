@@ -54,6 +54,17 @@ let game = (function() {
     })
 
     // restart everything
+    cacheDom.resetBtn.addEventListener("click", () => {
+        gameBoardModule.gameBoard = [0, 0, 0, 0, 0, 0, 0, 0, 0];
+        cacheDom.tiles.forEach(tile => tile.textContent = "");
+        renderModule.render();
+        turns = 0;
+        cacheDom.playerNames[0].value = "";
+        cacheDom.playerNames[1].value = "";
+        cacheDom.initialModal.classList.add("active");
+        cacheDom.resetBtn.classList.remove("active");
+        cacheDom.resultModal.classList.remove("active");
+    })
 
     // determine wwhether an X or an O is to be placed 
     const determineTurn = function(){
