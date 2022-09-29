@@ -12,11 +12,12 @@
     <h1>Tic-Tac-Toe</h1>
     <div id="initial-modal" class="active">
         <form>
-            <label id="name-player-one">Player One</label>
-            <input class="name" type="text">
-            <label id="name-player-two">Player Two</label>
-            <input class="name" type="text">
-            <button type="button" id="startBtn">Start</button>
+            <label>Player One</label>
+            <input id="name-player-one" class="name" type="text">
+                <label >Player Two</label>
+                <input id="ai-checkbox" type="checkbox" name="ai">
+            <input id="name-player-two" class="name" type="text">
+            <button type="button" id="start-btn">Start</button>
         </form>
     </div>
     <div id="app-container">
@@ -39,7 +40,7 @@
         <button class="tile" id="8">
         </button>
     </div>
-    <button id="resetBtn" class="reset">Reset</button>
+    <button id="reset-btn" class="reset">Reset</button>
     <div id="result-modal">
         <p id="result-printer"></p>
     </div>
